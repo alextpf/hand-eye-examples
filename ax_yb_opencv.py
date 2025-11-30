@@ -1,3 +1,40 @@
+"""
+1.
+calibrateHandEye() solves for:
+T_ct * T_tb = T_cb = T_cg * T_gb
+i.e. T_ct * T_tb = T_cg * T_gb
+or: AX = YB
+
+knowns are A & B, or
+- A: analogous to T_ct
+- B: analogous to T_gb
+
+unknowns are:
+- X: analogous to T_tb
+- Y: analogous to T_cg
+
+R_wb, t_wb, R_cg, t_cg = calibrateRobotWorldHandEye(R_ct, t_ct, R_gb, t_gb)
+i.e.
+R_X, t_X, R_Y, t_Y = calibrateRobotWorldHandEye(R_A, t_A, R_B, t_B)
+
+2.
+calibrateRobotWorldHandEye() solves for:
+T_cw * T_wb = T_cb = T_cg * T_gb
+i.e. T_cw * T_wb = T_cg * T_gb
+or: AX = YB
+
+knowns are A & B, or
+- A: analogous to T_cw
+- B: analogous to T_gb
+
+unknowns are:
+- X: analogous to T_wb
+- Y: analogous to T_cg
+
+R_wb, t_wb, R_cg, t_cg = calibrateRobotWorldHandEye(R_cw, t_cw, R_gb, t_gb)
+i.e.
+R_X, t_X, R_Y, t_Y = calibrateRobotWorldHandEye(R_A, t_A, R_B, t_B)
+"""
 import numpy as np
 import cv2
 from gtsam import Pose3, Rot3
