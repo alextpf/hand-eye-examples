@@ -1,22 +1,25 @@
 """
+t: target board
+b: base
+g: gripper
+c: camera
+
 1.
 calibrateHandEye() solves for:
-T_cg * T_gb = T_cb = T_ct * T_tb
+T_bg1 * T_gc * T_ct1  = T_bt = T_bg2 * T_gc * T_ct2
+
 i.e.
-T_cg * T_gb = T_ct * T_tb
-  X  *  A   =   B  *  Y
+( T_bg2.inv() * T_bg1 ) * T_gc = T_gc * ( T_ct2 * T_ct1.inv() )
+           A            *  X   =   X  *          B
 
 knowns are A & B, or
-- A: analogous to T_gb
-- B: analogous to T_ct
+- A: T_bg2.inv() * T_bg1
+- B: T_ct2 * T_ct1.inv()
 
 unknowns are:
-- X: analogous to T_cg
-- Y: analogous to T_tb
+- X: T_gc
 
-R_cg, t_cg, R_wb, t_wb = calibrateHandEye(R_gb, t_gb, R_ct, t_ct)
-i.e.
-R_X, t_X, R_Y, t_Y = calibrateHandEye(R_A, t_A, R_B, t_B)
+R_gc, t_gc  = calibrateHandEye(R_A, t_A, R_B, t_B)
 
 2.
 calibrateRobotWorldHandEye() solves for:
