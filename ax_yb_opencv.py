@@ -1,21 +1,22 @@
 """
 1.
 calibrateHandEye() solves for:
-T_ct * T_tb = T_cb = T_cg * T_gb
-i.e. T_ct * T_tb = T_cg * T_gb
-or: AX = YB
+T_cg * T_gb = T_cb = T_ct * T_tb
+i.e.
+T_cg * T_gb = T_ct * T_tb
+  X  *  A   =   B  *  Y
 
 knowns are A & B, or
-- A: analogous to T_ct
-- B: analogous to T_gb
+- A: analogous to T_gb
+- B: analogous to T_ct
 
 unknowns are:
-- X: analogous to T_tb
-- Y: analogous to T_cg
+- X: analogous to T_cg
+- Y: analogous to T_tb
 
-R_wb, t_wb, R_cg, t_cg = calibrateRobotWorldHandEye(R_ct, t_ct, R_gb, t_gb)
+R_cg, t_cg, R_wb, t_wb = calibrateHandEye(R_gb, t_gb, R_ct, t_ct)
 i.e.
-R_X, t_X, R_Y, t_Y = calibrateRobotWorldHandEye(R_A, t_A, R_B, t_B)
+R_X, t_X, R_Y, t_Y = calibrateHandEye(R_A, t_A, R_B, t_B)
 
 2.
 calibrateRobotWorldHandEye() solves for:
