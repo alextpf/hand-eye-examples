@@ -28,12 +28,12 @@ i.e. T_cw * T_wb = T_cg * T_gb
 or: AX = YB
 
 knowns are A & B, or
-- A: analogous to T_cw
-- B: analogous to T_gb
+- A: T_cw
+- B: T_gb
 
 unknowns are:
-- X: analogous to T_wb
-- Y: analogous to T_cg
+- X: T_wb
+- Y: T_cg
 
 R_wb, t_wb, R_cg, t_cg = calibrateRobotWorldHandEye(R_cw, t_cw, R_gb, t_gb)
 i.e.
